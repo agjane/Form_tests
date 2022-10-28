@@ -1,18 +1,14 @@
 package com.toolsQA;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 
 import java.io.File;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static java.nio.file.Files.delete;
 
 public class Form_tests {
     @BeforeAll
@@ -21,6 +17,7 @@ public class Form_tests {
         Configuration.baseUrl = "https://demoqa.com";
     }
 
+    //Тест на форму регистрации студента
     @Test
     void fillFormTest() {
 
@@ -43,7 +40,22 @@ public class Form_tests {
         $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#hobbiesWrapper").$(byText("Music")).click();
         $("#uploadPicture").uploadFile(new File("src/photo/2810595319.jpg"));
+        $("#currentAddress").setValue("Some country, some street 1, some house");
+        $("#state").click();
+        $("#stateCity-wrapper").$(byText("NCR")).click();
+        $("#city").click();
+        $("#city").$(byText("Noida")).click();
+        $("#submit").click();
+    }
 
+    //Проверка формы
+    @Test
+    void checktest() {
+
+        $("[#example-modal-sizes-title-lg]").shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").shouldHave(text("Jane Ag"), text("ag.jane@pochta.ru"));
 
     }
 }
+
+
