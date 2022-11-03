@@ -3,14 +3,15 @@ package com.toolsQA;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
+import pages.RegistrationFrmPage;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Form_tests {
+
+    RegistrationFrmPage registrationFrmPage = new RegistrationFrmPage();
+
     @BeforeAll
     static void setUP() {
         Configuration.holdBrowserOpen = true;
@@ -20,31 +21,31 @@ public class Form_tests {
     //Тест на форму регистрации студента
     @Test
     void fillFormTest() {
+        String firstName ="Jane";
+        String lastName = "Ag";
+        String email = "ag.jane@pochta.ru";
+        String gender = "Female";
+        String phone = "9056346899";
+        String subjects = "Arts, History";
+        String hobbies = "Reading, Music";
+        String Picture = "picture";
+        String address = "Address";
+        String State = "state";
+        String City = "city";
 
-        open("/automation-practice-form");
-        executeJavaScript("$('footer').remove()");
-        executeJavaScript("$('#fixedban').remove()");
-        $("#firstName").setValue("Jane");
-        $("#lastName").setValue("Ag");
-        $("#userEmail").setValue("ag.jane@pochta.ru");
-        $("#gender-radio-2").doubleClick();
-        $("#userNumber").setValue("9056346899");
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("October");
-        $(".react-datepicker__year-select").selectOption("1998");
-        $(".react-datepicker__day--011:not(.react-datepicker__day--outside-month)").click();
-        $("#subjectsInput").sendKeys("Arts");
-        $("#subjectsInput").pressEnter();
-        $("#subjectsInput").sendKeys("History");
-        $("#subjectsInput").pressEnter();
-        $("#hobbiesWrapper").$(byText("Reading")).click();
-        $("#hobbiesWrapper").$(byText("Music")).click();
-        $("#uploadPicture").uploadFile(new File("src/photo/2810595319.jpg"));
-        $("#currentAddress").setValue("Some country, some street 1, some house");
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("NCR")).click();
-        $("#city").click();
-        $("#city").$(byText("Noida")).click();
+        registrationFrmPage.openPage()
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setEmail(email)
+                .setGender(gender)
+                .setPhone(phone)
+                .setDateOfBirth("11", "October", "1998")
+                .setSubjects(subjects)
+                .setHobbies(hobbies)
+                .setPicture(Picture)
+                .setAddress(address)
+                .setState(State)
+                .setCity(City);
         $("#submit").click();
     }
 
@@ -57,5 +58,4 @@ public class Form_tests {
 
     }
 }
-
 
