@@ -26,12 +26,14 @@ public class Form_tests {
         String email = "ag.jane@pochta.ru";
         String gender = "Female";
         String phone = "9056346899";
-        String subjects = "Arts, History";
-        String hobbies = "Reading, Music";
-        String Picture = "picture";
-        String address = "Address";
-        String State = "state";
-        String City = "city";
+        String subject1 = "Arts";
+        String subject2 = "History";
+        String hobby1 = "Reading";
+        String hobby2 = "Music";
+        String Picture = "src/photo/2810595319.jpg";
+        String address = "Some country, some street 1, some house";
+        String State = "NCR";
+        String City = "Noida";
 
         registrationFrmPage.openPage()
                 .setFirstName(firstName)
@@ -40,8 +42,10 @@ public class Form_tests {
                 .setGender(gender)
                 .setPhone(phone)
                 .setDateOfBirth("11", "October", "1998")
-                .setSubjects(subjects)
-                .setHobbies(hobbies)
+                .setSubjects(subject1)
+                .setAnotherSubject(subject2)
+                .setHobbies(hobby1)
+                .setHobby(hobby2)
                 .setPicture(Picture)
                 .setAddress(address)
                 .setState(State)
@@ -58,4 +62,3 @@ public class Form_tests {
 
     }
 }
-

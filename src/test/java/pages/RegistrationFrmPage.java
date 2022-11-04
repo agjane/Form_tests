@@ -26,8 +26,8 @@ public class RegistrationFrmPage {
 
         return this;
     }
-    public RegistrationFrmPage setEmail (String value) {
-        $("#userEmail").setValue("ag.jane@pochta.ru");
+    public RegistrationFrmPage setEmail (String email) {
+        $("#userEmail").setValue(email);
 
         return this;
     }
@@ -37,8 +37,8 @@ public class RegistrationFrmPage {
         return this;
     }
 
-    public RegistrationFrmPage setPhone (String value) {
-        $("#userNumber").setValue("9056346899");
+    public RegistrationFrmPage setPhone (String phone) {
+        $("#userNumber").setValue(phone);
 
         return this;
     }
@@ -50,44 +50,52 @@ public class RegistrationFrmPage {
         return this;
     }
 
-    public RegistrationFrmPage setSubjects (String value) {
-        $("#subjectsInput").sendKeys("Arts");
-        $("#subjectsInput").pressEnter();
-        $("#subjectsInput").sendKeys("History");
+    public RegistrationFrmPage setSubjects (String subject1) {
+        $("#subjectsInput").sendKeys(subject1);
         $("#subjectsInput").pressEnter();
 
         return this;
     }
-
-    public RegistrationFrmPage setHobbies (String value) {
-        $("#hobbiesWrapper").$(byText("Reading")).click();
-        $("#hobbiesWrapper").$(byText("Music")).click();
-
-        return this;
-    }
-
-    public RegistrationFrmPage setPicture (String value) {
-        $("#uploadPicture").uploadFile(new File("src/photo/2810595319.jpg"));
+    public RegistrationFrmPage setAnotherSubject (String subject2) {
+        $("#subjectsInput").sendKeys(subject2);
+        $("#subjectsInput").pressEnter();
 
         return this;
     }
 
-    public RegistrationFrmPage setAddress (String value) {
-        $("#currentAddress").setValue("Some country, some street 1, some house");
+    public RegistrationFrmPage setHobbies (String hobby1) {
+        $("#hobbiesWrapper").$(byText(hobby1)).click();
+
+        return this;
+    }
+    public RegistrationFrmPage setHobby (String hobby2) {
+        $("#hobbiesWrapper").$(byText(hobby2)).click();
 
         return this;
     }
 
-    public RegistrationFrmPage setState (String value) {
+    public RegistrationFrmPage setPicture (String Picture) {
+        $("#uploadPicture").uploadFile(new File(Picture));
+
+        return this;
+    }
+
+    public RegistrationFrmPage setAddress (String address) {
+        $("#currentAddress").setValue(address);
+
+        return this;
+    }
+
+    public RegistrationFrmPage setState (String State) {
         $("#state").click();
-        $("#stateCity-wrapper").$(byText("NCR")).click();
+        $("#stateCity-wrapper").$(byText(State)).click();
 
         return this;
     }
 
-    public RegistrationFrmPage setCity (String value) {
+    public RegistrationFrmPage setCity (String City) {
         $("#city").click();
-        $("#city").$(byText("Noida")).click();
+        $("#city").$(byText(City)).click();
 
         return this;
     }
